@@ -22,7 +22,7 @@ import java.util.Vector;
  *         To change the template for this generated type comment go to
  *         Window - Preferences - Java - Code Generation - Code and Comments
  */
-public class LibraryReportingService {
+public class LibraryReportingServiceImpl implements LibraryReportingService{
     Collection outputServices = new Vector();
 
     public void outputSubscribersReport() {

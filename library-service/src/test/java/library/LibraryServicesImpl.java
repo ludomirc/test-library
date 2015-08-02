@@ -10,9 +10,9 @@ import subscribers.SubscriberExtent;
 
 import java.util.GregorianCalendar;
 
-public class LibraryServices {
+public class LibraryServicesImpl implements LibraryServices{
 
-    public LibraryServices() {
+    public LibraryServicesImpl() {
     }
 
     public void addResource(Resource resource) {

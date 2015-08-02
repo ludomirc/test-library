@@ -8,12 +8,12 @@ import subscribers.SubscriberExtent;
 import java.util.GregorianCalendar;
 
 public class LibrarySimulator {
-    LibraryServices library;
-    LibraryReportingService reporting;
+    LibraryServicesImpl library;
+    LibraryReportingServiceImpl reporting;
 
     public LibrarySimulator() {
-        library = new LibraryServices();
-        reporting = new LibraryReportingService();
+        library = new LibraryServicesImpl();
+        reporting = new LibraryReportingServiceImpl();
         reporting.addOutputService(new ConsoleOutputService());
     }
 
