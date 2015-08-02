@@ -2,7 +2,6 @@ package library;
 
 import loans.Loan;
 import resources.Resource;
-import resources.ResourceExtent;
 import subscribers.Pensioner;
 import subscribers.Student;
 
