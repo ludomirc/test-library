@@ -6,7 +6,7 @@
  */
 package loans;
 
-import resources.AbstractResource;
+import resources.Resource;
 import resources.ResourceExtent;
 import subscribers.Pensioner;
 import subscribers.Student;
@@ -34,7 +34,7 @@ public class LoanExtent {
         }
     }
 
-    public Loan createLoan(AbstractResource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
+    public Loan createLoan(Resource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
         if (resource == null) {
             throw new NullPointerException("Resource parameter can not be null");
         }

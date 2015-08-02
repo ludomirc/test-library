@@ -1,7 +1,7 @@
 package loans;
 
 import reporting.OutputServiceContributor;
-import resources.AbstractResource;
+import resources.Resource;
 import subscribers.Pensioner;
 import subscribers.Student;
 
@@ -9,7 +9,7 @@ import java.util.GregorianCalendar;
 
 public class Loan implements OutputServiceContributor {
     public static int idCounter = 0;
-    private AbstractResource resource;
+    private Resource resource;
     private Object subscriber;
     private GregorianCalendar loanDate;
     private GregorianCalendar returnDate;
@@ -70,11 +70,11 @@ public class Loan implements OutputServiceContributor {
         this.loanDate = loanDate;
     }
 
-    public AbstractResource getResource() {
+    public Resource getResource() {
         return resource;
     }
 
-    public void setResource(AbstractResource resource) {
+    public void setResource(Resource resource) {
         this.resource = resource;
     }
 

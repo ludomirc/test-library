@@ -27,13 +27,13 @@ public class ResourceExtent {
         createResource(ResourceFactory.getResourceInstance("Game", "Midtown madness", "PS2"));
     }
 
-    public void createResource(AbstractResource resource) {
+    public void createResource(Resource resource) {
         resource.setId(getNextId());
         resources.put(resource.getId(), resource);
     }
 
-    public AbstractResource findByPrimaryKey(String id) {
-        return (AbstractResource) resources.get(id);
+    public Resource findByPrimaryKey(String id) {
+        return (Resource) resources.get(id);
     }
 
     public Collection getResources() {

@@ -5,7 +5,7 @@ import loans.Loan;
 /**
  * Created by Benek on 2015-08-02.
  */
-public class GameResource extends AbstractResource {
+public class GameResource extends Resource {
 
     private String gameType;
 

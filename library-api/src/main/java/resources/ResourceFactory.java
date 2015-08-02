@@ -7,7 +7,7 @@ public class ResourceFactory {
 
     public static final String RESOURCE_TYPE_BOOK = "Book";
 
-    public static AbstractResource getResourceInstance(String type, String title, String extra) {
+    public static Resource getResourceInstance(String type, String title, String extra) {
         if (type.equals(RESOURCE_TYPE_BOOK)) {
             return new BookResource(title, type, extra);
         } else {

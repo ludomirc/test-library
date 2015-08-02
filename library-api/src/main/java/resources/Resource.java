@@ -9,7 +9,7 @@ import java.io.Serializable;
  * Created by Benek on 2015-08-02.
  */
 
-public abstract class AbstractResource implements OutputServiceContributor, Serializable {
+public abstract class Resource implements OutputServiceContributor, Serializable {
 
     protected String id;
     protected String title;
@@ -19,21 +19,21 @@ public abstract class AbstractResource implements OutputServiceContributor, Seri
     private static final int MAX_LOAN_PERIOD = 28;
     private static final double SURCHARGE = 0;
 
-    public AbstractResource() {
+    public Resource() {
     }
 
-    public AbstractResource(String title, String type) {
+    public Resource(String title, String type) {
         this.title = title;
         this.type = type;
     }
 
-    public AbstractResource(String title, String type, Loan loan) {
+    public Resource(String title, String type, Loan loan) {
         this.title = title;
         this.type = type;
         this.loan = loan;
     }
 
-    public AbstractResource(String id, String title, String type, Loan loan) {
+    public Resource(String id, String title, String type, Loan loan) {
         this.id = id;
         this.title = title;
         this.type = type;

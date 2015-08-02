@@ -5,7 +5,7 @@ import loans.Loan;
 /**
  * Created by Benek on 2015-08-02.
  */
-public class BookResource extends AbstractResource {
+public class BookResource extends Resource {
 
     private String author;
 

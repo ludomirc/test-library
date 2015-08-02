@@ -1,7 +1,7 @@
 package library;
 
 import reporting.ConsoleOutputService;
-import resources.AbstractResource;
+import resources.Resource;
 import resources.ResourceExtent;
 import subscribers.SubscriberExtent;
 
@@ -30,7 +30,7 @@ public class LibrarySimulator {
 
     public void runSimulator() {
         reporting.outputOutstandingLoansReport();
-        AbstractResource resource = ResourceExtent.INSTANCE.findByPrimaryKey("R1");
+        Resource resource = ResourceExtent.INSTANCE.findByPrimaryKey("R1");
         Object subscriber = SubscriberExtent.INSTANCE.findByPrimaryKey("S1");
         try {
             library.loanResourceToSubscriber(resource, subscriber, new GregorianCalendar(2004, 00, 20));
