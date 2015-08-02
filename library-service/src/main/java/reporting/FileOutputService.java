@@ -11,7 +11,7 @@ import java.util.Iterator;
  */
 public class FileOutputService implements OutputService {
 
-    private static Object lock = new Object();
+    public static final String DEFAULT_FILE_NAME = "library.log";
     private BufferedWriter bufferedWriter = null;
     private static FileOutputService instance = null;
 
@@ -20,20 +20,18 @@ public class FileOutputService implements OutputService {
     }
 
     public static FileOutputService getInstance() throws Exception {
-        synchronized (lock) {
-            if (instance == null) {
-                instance = new FileOutputService("library.log");
-            }
+        if (instance == null) {
+            instance = new FileOutputService(DEFAULT_FILE_NAME);
         }
         return instance;
     }
 
     public static FileOutputService getInstance(String fileName) throws Exception {
-        synchronized (lock) {
-            if (instance == null) {
-                instance = new FileOutputService(fileName);
-            }
+
+        if (instance == null) {
+            instance = new FileOutputService(fileName);
         }
+
         return instance;
     }
 
@@ -60,6 +58,7 @@ public class FileOutputService implements OutputService {
         if (bufferedWriter != null) {
             bufferedWriter.flush();
             bufferedWriter.close();
+            instance = null;
         }
     }
 }
