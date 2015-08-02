@@ -6,6 +6,7 @@ import resources.Resource;
 import resources.ResourceExtent;
 import subscribers.Pensioner;
 import subscribers.Student;
+import subscribers.Subscriber;
 import subscribers.SubscriberExtent;
 
 import java.util.GregorianCalendar;
@@ -27,7 +28,7 @@ public class LibraryServicesImpl implements LibraryServices{
         SubscriberExtent.INSTANCE.createPensioner(pensioner);
     }
 
-    public void loanResourceToSubscriber(Resource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
+    public void loanResourceToSubscriber(Resource resource, Subscriber subscriber, GregorianCalendar gregorianCalendar) throws Exception {
         LoanExtent.INSTANCE.createLoan(resource, subscriber, gregorianCalendar);
     }
 

@@ -3,6 +3,7 @@ package library;
 import reporting.ConsoleOutputService;
 import resources.Resource;
 import resources.ResourceExtent;
+import subscribers.Subscriber;
 import subscribers.SubscriberExtent;
 
 import java.util.GregorianCalendar;
@@ -31,7 +32,7 @@ public class LibrarySimulator {
     public void runSimulator() {
         reporting.outputOutstandingLoansReport();
         Resource resource = ResourceExtent.INSTANCE.findByPrimaryKey("R1");
-        Object subscriber = SubscriberExtent.INSTANCE.findByPrimaryKey("S1");
+        Subscriber subscriber = SubscriberExtent.INSTANCE.findByPrimaryKey("S1");
         try {
             library.loanResourceToSubscriber(resource, subscriber, new GregorianCalendar(2004, 00, 20));
         } catch (Exception e) {

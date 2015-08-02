@@ -38,8 +38,8 @@ public class SubscriberExtent {
         subscribers.put(student.getId(), student);
     }
 
-    public Object findByPrimaryKey(String id) {
-        return subscribers.get(id);
+    public Subscriber findByPrimaryKey(String id) {
+        return (Subscriber) subscribers.get(id);
     }
 
     public Collection getSubscribers() {
