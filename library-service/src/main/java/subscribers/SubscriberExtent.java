@@ -11,9 +11,10 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class SubscriberExtent {
-    public static SubscriberExtent INSTANCE = new SubscriberExtent();
+
     static Map subscribers = new Hashtable();
     static int idCounter = 0;
+    public static SubscriberExtent INSTANCE = new SubscriberExtent();
 
     private SubscriberExtent() {
         // Initialise and register loans.library subscribers

@@ -11,9 +11,11 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class ResourceExtent {
-    public static ResourceExtent INSTANCE = new ResourceExtent();
+
     private static Map resources = new Hashtable();
     private static int idCounter = 0;
+    public static ResourceExtent INSTANCE = new ResourceExtent();
+
 
     private ResourceExtent() {
         // Initialise and register loans.library resources

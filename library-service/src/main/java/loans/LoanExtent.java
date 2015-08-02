@@ -18,9 +18,10 @@ import java.util.Hashtable;
 import java.util.Map;
 
 public class LoanExtent {
-    public static LoanExtent INSTANCE = new LoanExtent();
+
     private static Map loans = new Hashtable();
     private static int idCounter = 0;
+    public static LoanExtent INSTANCE = new LoanExtent();
 
     private LoanExtent() {
         try {
