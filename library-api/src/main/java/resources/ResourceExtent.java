@@ -16,7 +16,7 @@ public class ResourceExtent {
     private static int idCounter = 0;
 
     private ResourceExtent() {
-        // Initialise and register library resources
+        // Initialise and register loans.library resources
         createResource(new Resource("Book", "Lord of the Rings", "J.R.Tolkien"));
         createResource(new Resource("Book", "2001 Space Odessey", "Arthur C Clarke"));
         createResource(new Resource("Book", "How to win at bingo", "Two fat ladies"));

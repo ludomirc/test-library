@@ -16,7 +16,7 @@ public class SubscriberExtent {
     static int idCounter = 0;
 
     private SubscriberExtent() {
-        // Initialise and register library subscribers
+        // Initialise and register loans.library subscribers
         createPensioner(new Pensioner("Bill"));
         createPensioner(new Pensioner("Elsie"));
         createStudent(new Student("Zach", "De Montfort University"));
