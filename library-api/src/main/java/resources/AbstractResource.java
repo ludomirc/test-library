@@ -9,14 +9,36 @@ import java.io.Serializable;
  * Created by Benek on 2015-08-02.
  */
 
-public abstract class AbstractResource implements OutputServiceContributor, Serializable{
+public abstract class AbstractResource implements OutputServiceContributor, Serializable {
 
-    public String id;
-    public String title;
-    public String type;
-    public String author;
-    public Loan loan;
+    protected String id;
+    protected String title;
+    protected String type;
+    protected Loan loan;
 
+    private static final int MAX_LOAN_PERIOD = 28;
+    private static final double SURCHARGE = 0;
+
+    public AbstractResource() {
+    }
+
+    public AbstractResource(String title, String type) {
+        this.title = title;
+        this.type = type;
+    }
+
+    public AbstractResource(String title, String type, Loan loan) {
+        this.title = title;
+        this.type = type;
+        this.loan = loan;
+    }
+
+    public AbstractResource(String id, String title, String type, Loan loan) {
+        this.id = id;
+        this.title = title;
+        this.type = type;
+        this.loan = loan;
+    }
 
     public String getId() {
         return id;
@@ -42,19 +64,23 @@ public abstract class AbstractResource implements OutputServiceContributor, Seri
         this.type = type;
     }
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
     public Loan getLoan() {
         return loan;
     }
 
-    public void setLoan(Loan loan) {
+    public void setLoan(Loan loan) throws Exception {
+        if (this.loan != null) {
+            throw new Exception("This resource is already on loan: " + this.loan.getFormattedString());
+        }
         this.loan = loan;
     }
+
+    public int getMaxLoanPeriod() {
+        return MAX_LOAN_PERIOD;
+    }
+
+    public double getSurcharge() {
+        return SURCHARGE;
+    }
+
 }

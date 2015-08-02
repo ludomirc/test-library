@@ -60,6 +60,7 @@ public class Resource implements OutputServiceContributor {
         this.loan = loan;
     }
 
+    //
     public int getMaxLoanPeriod() {
         if (gameType.equals("X-Box")) {
             return 7;
@@ -84,6 +85,7 @@ public class Resource implements OutputServiceContributor {
         }
     }
 
+    //
     public String getFormattedString() {
         if (type.equals("Book"))
             return "Book - " + title + " by " + author;
