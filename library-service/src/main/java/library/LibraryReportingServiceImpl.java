@@ -9,9 +9,11 @@ package library;
 import loans.Loan;
 import loans.LoanExtent;
 import reporting.OutputService;
+import reporting.OutputServiceContributor;
 import resources.ResourceExtent;
 import subscribers.SubscriberExtent;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Vector;
@@ -23,14 +25,14 @@ import java.util.Vector;
  *         Window - Preferences - Java - Code Generation - Code and Comments
  */
 public class LibraryReportingServiceImpl implements LibraryReportingService{
-    Collection outputServices = new Vector();
+    Collection<OutputService> outputServices = new Vector<OutputService>();
 
     public void outputSubscribersReport() {
         OutputService outputService;
-        for (Iterator iter = outputServices.iterator(); iter.hasNext(); ) {
-            outputService = (OutputService) iter.next();
+        for (Iterator<OutputService> iter = outputServices.iterator(); iter.hasNext(); ) {
+            outputService = iter.next();
             try {
-                outputService.outputExtent("Subscribers", SubscriberExtent.INSTANCE.getSubscribers());
+                outputService.outputExtent("Subscribers", new ArrayList<OutputServiceContributor>(SubscriberExtent.INSTANCE.getSubscribers()));
             } catch (Exception e) {
                 System.out.println("Exception while outputing subscriber to service " + outputService.getName() + " - Original message: " + e.getMessage());
             }
@@ -41,11 +43,11 @@ public class LibraryReportingServiceImpl implements LibraryReportingService{
      * Generates a report on resources using the registered output services
      */
     public void outputResourcesReport() {
-        OutputService outputService;
-        for (Iterator iter = outputServices.iterator(); iter.hasNext(); ) {
-            outputService = (OutputService) iter.next();
+        OutputService outputService = null;
+        for (Iterator<OutputService> iter = outputServices.iterator(); iter.hasNext(); ) {
+            outputService = iter.next();
             try {
-                outputService.outputExtent("Resources", ResourceExtent.INSTANCE.getResources());
+                outputService.outputExtent("Resources", new ArrayList<OutputServiceContributor>(ResourceExtent.INSTANCE.getResources()));
             } catch (Exception e) {
                 System.out.println("Exception while outputing resource to service " + outputService.getName() + " - Original message: " + e.getMessage());
             }
@@ -53,19 +55,19 @@ public class LibraryReportingServiceImpl implements LibraryReportingService{
     }
 
     public void outputOutstandingLoansReport() {
-        OutputService outputService;
-        Collection loans = LoanExtent.INSTANCE.getLoans();
-        Collection outstandingLoans = new Vector();
-        for (Iterator iter = loans.iterator(); iter.hasNext(); ) {
-            Loan element = (Loan) iter.next();
+        OutputService outputService = null;
+        Collection<Loan> loans = LoanExtent.INSTANCE.getLoans();
+        Collection<Loan> outstandingLoans = new Vector<Loan>();
+        for (Iterator<Loan> iter = loans.iterator(); iter.hasNext(); ) {
+            Loan element = iter.next();
             if (element.getReturnDate() == null) {
                 outstandingLoans.add(element);
             }
         }
-        for (Iterator iter = outputServices.iterator(); iter.hasNext(); ) {
-            outputService = (OutputService) iter.next();
+        for (Iterator<OutputService> iter = outputServices.iterator(); iter.hasNext(); ) {
+            outputService = iter.next();
             try {
-                outputService.outputExtent("Loans", outstandingLoans);
+                outputService.outputExtent("Loans", new ArrayList<OutputServiceContributor>(outstandingLoans));
             } catch (Exception e) {
                 System.out.println("Exception while outputing loan to service " + outputService.getName() + " - Original message: " + e.getMessage());
             }

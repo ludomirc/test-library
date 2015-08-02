@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class SubscriberExtent {
 
-    static Map subscribers = new Hashtable();
+    static Map<String, Subscriber> subscribers = new Hashtable<String, Subscriber>();
     static int idCounter = 0;
     public static SubscriberExtent INSTANCE = new SubscriberExtent();
 
@@ -39,10 +39,10 @@ public class SubscriberExtent {
     }
 
     public Subscriber findByPrimaryKey(String id) {
-        return (Subscriber) subscribers.get(id);
+        return subscribers.get(id);
     }
 
-    public Collection getSubscribers() {
+    public Collection<Subscriber> getSubscribers() {
         return subscribers.values();
     }
 }

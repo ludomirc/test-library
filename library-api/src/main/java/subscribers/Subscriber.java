@@ -14,7 +14,7 @@ public abstract class Subscriber implements OutputServiceContributor, Serializab
 
     protected String id;
     protected String name;
-    protected Map loans = new Hashtable();
+    protected Map<String, Loan> loans = new Hashtable<String, Loan>();
 
     public Subscriber() {
     }
@@ -28,7 +28,7 @@ public abstract class Subscriber implements OutputServiceContributor, Serializab
         this.name = name;
     }
 
-    public Subscriber(String id, String name, Map loans) {
+    public Subscriber(String id, String name, Map<String, Loan> loans) {
         this.id = id;
         this.name = name;
         this.loans = loans;
@@ -52,11 +52,11 @@ public abstract class Subscriber implements OutputServiceContributor, Serializab
         this.name = name;
     }
 
-    public Map getLoans() {
+    public Map<String, Loan> getLoans() {
         return loans;
     }
 
-    public void setLoans(Map loans) {
+    public void setLoans(Map<String, Loan> loans) {
         this.loans = loans;
     }
 

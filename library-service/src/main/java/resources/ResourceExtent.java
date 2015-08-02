@@ -12,7 +12,7 @@ import java.util.Map;
 
 public class ResourceExtent {
 
-    private static Map resources = new Hashtable();
+    private static Map<String, Resource> resources = new Hashtable<String, Resource>();
     private static int idCounter = 0;
     public static ResourceExtent INSTANCE = new ResourceExtent();
 
@@ -33,10 +33,10 @@ public class ResourceExtent {
     }
 
     public Resource findByPrimaryKey(String id) {
-        return (Resource) resources.get(id);
+        return resources.get(id);
     }
 
-    public Collection getResources() {
+    public Collection<Resource> getResources() {
         return resources.values();
     }
 

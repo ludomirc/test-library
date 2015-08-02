@@ -19,7 +19,7 @@ import java.util.Map;
 
 public class LoanExtent {
 
-    private static Map loans = new Hashtable();
+    private static Map<String, Loan> loans = new Hashtable<String, Loan>();
     private static int idCounter = 0;
     public static LoanExtent INSTANCE = new LoanExtent();
 
@@ -57,10 +57,10 @@ public class LoanExtent {
     }
 
     public Loan findByPrimaryKey(String id) {
-        return (Loan) loans.get(id);
+        return loans.get(id);
     }
 
-    public Collection getLoans() {
+    public Collection<Loan> getLoans() {
         return loans.values();
     }
 
