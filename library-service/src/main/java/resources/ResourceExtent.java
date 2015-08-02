@@ -19,21 +19,21 @@ public class ResourceExtent {
 
     private ResourceExtent() {
         // Initialise and register loans.library resources
-        createResource(new Resource("Book", "Lord of the Rings", "J.R.Tolkien"));
-        createResource(new Resource("Book", "2001 Space Odessey", "Arthur C Clarke"));
-        createResource(new Resource("Book", "How to win at bingo", "Two fat ladies"));
-        createResource(new Resource("Book", "The Cold. Don't let it kill you.", "J.R.Hartley"));
-        createResource(new Resource("Game", "Halo", "X-Box"));
-        createResource(new Resource("Game", "Midtown madness", "PS2"));
+        createResource(ResourceFactory.getResourceInstance("Book", "Lord of the Rings", "J.R.Tolkien"));
+        createResource(ResourceFactory.getResourceInstance("Book", "2001 Space Odessey", "Arthur C Clarke"));
+        createResource(ResourceFactory.getResourceInstance("Book", "How to win at bingo", "Two fat ladies"));
+        createResource(ResourceFactory.getResourceInstance("Book", "The Cold. Don't let it kill you.", "J.R.Hartley"));
+        createResource(ResourceFactory.getResourceInstance("Game", "Halo", "X-Box"));
+        createResource(ResourceFactory.getResourceInstance("Game", "Midtown madness", "PS2"));
     }
 
-    public void createResource(Resource resource) {
+    public void createResource(AbstractResource resource) {
         resource.setId(getNextId());
         resources.put(resource.getId(), resource);
     }
 
-    public Resource findByPrimaryKey(String id) {
-        return (Resource) resources.get(id);
+    public AbstractResource findByPrimaryKey(String id) {
+        return (AbstractResource) resources.get(id);
     }
 
     public Collection getResources() {

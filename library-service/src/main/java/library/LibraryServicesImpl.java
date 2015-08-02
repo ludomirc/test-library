@@ -2,7 +2,7 @@ package library;
 
 import loans.Loan;
 import loans.LoanExtent;
-import resources.Resource;
+import resources.AbstractResource;
 import resources.ResourceExtent;
 import subscribers.Pensioner;
 import subscribers.Student;
@@ -15,7 +15,7 @@ public class LibraryServicesImpl implements LibraryServices{
     public LibraryServicesImpl() {
     }
 
-    public void addResource(Resource resource) {
+    public void addResource(AbstractResource resource) {
         ResourceExtent.INSTANCE.createResource(resource);
     }
 
@@ -27,7 +27,7 @@ public class LibraryServicesImpl implements LibraryServices{
         SubscriberExtent.INSTANCE.createPensioner(pensioner);
     }
 
-    public void loanResourceToSubscriber(Resource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
+    public void loanResourceToSubscriber(AbstractResource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
         LoanExtent.INSTANCE.createLoan(resource, subscriber, gregorianCalendar);
     }
 

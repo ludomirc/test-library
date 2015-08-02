@@ -1,7 +1,7 @@
 package library;
 
 import loans.Loan;
-import resources.Resource;
+import resources.AbstractResource;
 import subscribers.Pensioner;
 import subscribers.Student;
 
@@ -13,13 +13,13 @@ import java.util.GregorianCalendar;
 public interface LibraryServices {
 
 
-    public void addResource(Resource resource);
+    public void addResource(AbstractResource resource);
 
     public void addPensioner(Student student);
 
     public void addStudent(Pensioner pensioner);
 
-    public void loanResourceToSubscriber(Resource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception;
+    public void loanResourceToSubscriber(AbstractResource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception;
 
     public void returnedResource(Loan loan, GregorianCalendar gregorianCalendar);
 

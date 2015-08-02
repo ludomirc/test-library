@@ -75,6 +75,10 @@ public abstract class AbstractResource implements OutputServiceContributor, Seri
         this.loan = loan;
     }
 
+    public void removeLoan() {
+        loan = null;
+    }
+
     public int getMaxLoanPeriod() {
         return MAX_LOAN_PERIOD;
     }

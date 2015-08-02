@@ -1,5 +1,3 @@
-package resources;
-
 import loans.Loan;
 import reporting.OutputServiceContributor;
 
