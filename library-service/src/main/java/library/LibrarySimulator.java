@@ -1,6 +1,7 @@
 package library;
 
 import reporting.ConsoleOutputService;
+import reporting.FileOutputService;
 import resources.Resource;
 import resources.ResourceExtent;
 import subscribers.Subscriber;
@@ -16,6 +17,11 @@ public class LibrarySimulator {
         library = new LibraryServicesImpl();
         reporting = new LibraryReportingServiceImpl();
         reporting.addOutputService(new ConsoleOutputService());
+        try {
+            reporting.addOutputService(FileOutputService.getInstance("library.log"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
@@ -33,6 +39,7 @@ public class LibrarySimulator {
         reporting.outputOutstandingLoansReport();
         Resource resource = ResourceExtent.INSTANCE.findByPrimaryKey("R1");
         Subscriber subscriber = SubscriberExtent.INSTANCE.findByPrimaryKey("S1");
+
         try {
             library.loanResourceToSubscriber(resource, subscriber, new GregorianCalendar(2004, 00, 20));
         } catch (Exception e) {
@@ -61,5 +68,12 @@ public class LibrarySimulator {
             }
         }
         reporting.outputOutstandingLoansReport();
+
+
+        try {
+            FileOutputService.getInstance().closeStream();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
