@@ -4,13 +4,14 @@ import reporting.OutputServiceContributor;
 import resources.Resource;
 import subscribers.Pensioner;
 import subscribers.Student;
+import subscribers.Subscriber;
 
 import java.util.GregorianCalendar;
 
 public class Loan implements OutputServiceContributor {
     public static int idCounter = 0;
     private Resource resource;
-    private Object subscriber;
+    private Subscriber subscriber;
     private GregorianCalendar loanDate;
     private GregorianCalendar returnDate;
     private String id;
@@ -29,9 +30,9 @@ public class Loan implements OutputServiceContributor {
         if (subscriber == null) {
             formattedString += "Nobody";
         } else if (subscriber instanceof Student) {
-            formattedString += ((Student) subscriber).getFormattedString();
+            formattedString += subscriber.getFormattedString();
         } else if (subscriber instanceof Pensioner) {
-            formattedString += ((Pensioner) subscriber).getFormattedString();
+            formattedString += subscriber.getFormattedString();
         } else {
             formattedString += "Unknown subscriber type.";
         }
@@ -78,11 +79,11 @@ public class Loan implements OutputServiceContributor {
         this.resource = resource;
     }
 
-    public Object getSubscriber() {
+    public Subscriber getSubscriber() {
         return subscriber;
     }
 
-    public void setSubscriber(Object subscriber) {
+    public void setSubscriber(Subscriber subscriber) {
         this.subscriber = subscriber;
     }
 }
