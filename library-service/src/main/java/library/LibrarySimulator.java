@@ -19,11 +19,8 @@ public class LibrarySimulator {
         library = new LibraryServicesImpl();
         reporting = new LibraryReportingServiceImpl();
         reporting.addOutputService(new ConsoleOutputService());
-        try {
-            reporting.addOutputService(FileOutputService.getInstance("library.log"));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        reporting.addOutputService(new FileOutputService());
+
     }
 
     public static void main(String[] args) {
@@ -68,11 +65,5 @@ public class LibrarySimulator {
 
         reporting.outputOutstandingLoansReport();
 
-
-        try {
-            FileOutputService.getInstance().closeStream();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
