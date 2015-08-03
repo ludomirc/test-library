@@ -2,6 +2,8 @@ package subscribers;
 
 public class Pensioner extends Subscriber {
 
+    private static final int MAX_BORROWING_LIMIT = 3;
+
     public Pensioner() {
     }
 
@@ -15,7 +17,7 @@ public class Pensioner extends Subscriber {
 
     @Override
     public int getMaxBorrowing() {
-        return 3;
+        return MAX_BORROWING_LIMIT;
     }
 
     @Override

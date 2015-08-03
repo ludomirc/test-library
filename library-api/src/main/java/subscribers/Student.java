@@ -2,7 +2,8 @@ package subscribers;
 
 public class Student extends Subscriber {
 
-    public String institution;
+    private String institution;
+    private static final int MAX_BORROWING_LIMIT = 6;
 
     public Student(String id, String name, String institution) {
         super(id, name);
@@ -16,7 +17,7 @@ public class Student extends Subscriber {
 
     @Override
     public int getMaxBorrowing() {
-        return 6;
+        return MAX_BORROWING_LIMIT;
     }
 
     @Override
