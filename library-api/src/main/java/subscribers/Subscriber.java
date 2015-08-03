@@ -1,5 +1,6 @@
 package subscribers;
 
+import error.SubscriberMaxLimitException;
 import loans.Loan;
 import reporting.OutputServiceContributor;
 
@@ -62,7 +63,7 @@ public abstract class Subscriber implements OutputServiceContributor, Serializab
 
     public void addLoan(Loan loan) throws Exception {
         if (loans.size() - 1 == getMaxBorrowing()) {
-            throw new Exception(name + " has reached their borrowing limit.");
+            throw new SubscriberMaxLimitException(name + " has reached their borrowing limit.");
         }
         loan.setSubscriber(this);
         loans.put(loan.getId(), loan);

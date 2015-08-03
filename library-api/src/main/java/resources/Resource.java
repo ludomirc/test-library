@@ -1,5 +1,6 @@
 package resources;
 
+import error.LoanException;
 import loans.Loan;
 import reporting.OutputServiceContributor;
 
@@ -70,7 +71,7 @@ public abstract class Resource implements OutputServiceContributor, Serializable
 
     public void setLoan(Loan loan) throws Exception {
         if (this.loan != null) {
-            throw new Exception("This resource is already on loan: " + this.loan.getFormattedString());
+            throw new LoanException("This resource is already on loan: " + this.loan.getFormattedString());
         }
         this.loan = loan;
     }

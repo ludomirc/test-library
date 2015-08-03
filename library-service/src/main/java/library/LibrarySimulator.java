@@ -1,5 +1,7 @@
 package library;
 
+import error.LoanException;
+import error.SubscriberMaxLimitException;
 import reporting.ConsoleOutputService;
 import reporting.FileOutputService;
 import resources.Resource;
@@ -42,14 +44,12 @@ public class LibrarySimulator {
 
         try {
             library.loanResourceToSubscriber(resource, subscriber, new GregorianCalendar(2004, 00, 20));
+        } catch (LoanException e) {
+            System.out.println("Error - Resource can not be loaned");
+        } catch (SubscriberMaxLimitException e) {
+            System.out.println("Error - Max Limit");
         } catch (Exception e) {
-            if (e.getMessage().startsWith("This resource is already on loan")) {
-                System.out.println("Error - Resource can not be loaned");
-            } else if (e.getMessage().endsWith("has reached their borrowing limit.")) {
-                System.out.println("Error - Max Limit");
-            } else {
-                System.out.println(e.getMessage());
-            }
+            System.out.println(e.getMessage());
         }
 
         reporting.outputOutstandingLoansReport();
@@ -58,15 +58,14 @@ public class LibrarySimulator {
         reporting.outputOutstandingLoansReport();
         try {
             library.loanResourceToSubscriber(resource, subscriber, new GregorianCalendar(2004, 00, 20));
+        } catch (LoanException e) {
+            System.out.println("Error - Resource can not be loaned");
+        } catch (SubscriberMaxLimitException e) {
+            System.out.println("Error - Max Limit");
         } catch (Exception e) {
-            if (e.getMessage().startsWith("This resource is already on loan")) {
-                System.out.println("Error - Resource can not be loaned");
-            } else if (e.getMessage().endsWith("has reached their borrowing limit.")) {
-                System.out.println("Error - Max Limit");
-            } else {
-                System.out.println(e.getMessage());
-            }
+            System.out.println(e.getMessage());
         }
+
         reporting.outputOutstandingLoansReport();
 
 
