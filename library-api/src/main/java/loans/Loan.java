@@ -47,9 +47,9 @@ public class Loan implements OutputServiceContributor {
         if (this.returnDate != null)
             throw new IllegalStateException("Return date has already been assigned");
         if (subscriber instanceof Student) {
-            ((Student) subscriber).removeLoan(this);
+            subscriber.removeLoan(this);
         } else if (subscriber instanceof Pensioner) {
-            ((Pensioner) subscriber).removeLoan(this);
+            subscriber.removeLoan(this);
         }
         resource.removeLoan();
         this.returnDate = returnDate;
