@@ -62,7 +62,7 @@ public abstract class Subscriber implements OutputServiceContributor, Serializab
     }
 
     public void addLoan(Loan loan) throws Exception {
-        if (loans.size() - 1 == getMaxBorrowing()) {
+        if (loans.size() == getMaxBorrowing()) {
             throw new SubscriberMaxLimitException(name + " has reached their borrowing limit.");
         }
         loan.setSubscriber(this);
