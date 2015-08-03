@@ -10,6 +10,7 @@ import resources.Resource;
 import resources.ResourceExtent;
 import subscribers.Pensioner;
 import subscribers.Student;
+import subscribers.Subscriber;
 import subscribers.SubscriberExtent;
 
 import java.util.Collection;
@@ -34,7 +35,7 @@ public class LoanExtent {
         }
     }
 
-    public Loan createLoan(Resource resource, Object subscriber, GregorianCalendar gregorianCalendar) throws Exception {
+    public Loan createLoan(Resource resource, Subscriber subscriber, GregorianCalendar gregorianCalendar) throws Exception {
         if (resource == null) {
             throw new NullPointerException("Resource parameter can not be null");
         }
@@ -44,9 +45,9 @@ public class LoanExtent {
         Loan loan = new Loan();
         resource.setLoan(loan);
         if (subscriber instanceof Student) {
-            ((Student) subscriber).addLoan(loan);
+            subscriber.addLoan(loan);
         } else if (subscriber instanceof Pensioner) {
-            ((Pensioner) subscriber).addLoan(loan);
+            subscriber.addLoan(loan);
         }
         loan.setResource(resource);
         loan.setSubscriber(subscriber);
